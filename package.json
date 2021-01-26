@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jfisher396/node-weather-app#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "request": "^2.88.2"
   }
 }
