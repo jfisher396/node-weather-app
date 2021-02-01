@@ -2,12 +2,15 @@ require("dotenv").config();
 const request = require('request');
 
 const weatherstackUrl = process.env.WEATHERSTACK_API_URL + "query=Seattle&units=f";
+
 // const mapboxUrl = process.env.MAPBOX_API_URL;
 
 
 request({ url: weatherstackUrl, json: true }, (err, res) => {
     if (err) {
         console.log('Unable to connect to WeatherStack API')
+    } else if (res.body.error) {
+        console.log(res.body.error)
     } else {
         console.log(`It is currently ${res.body.current.weather_descriptions[0]} with a temperature of ${res.body.current.temperature} degrees. It feels like ${res.body.current.feelslike} degrees out.`)
     }
